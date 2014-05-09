@@ -3,8 +3,58 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "720160709ff7130c733e13b0647b59e4",
+    "hash": "d90a52639b25cb2b3ffac995f65e072b",
     "packages": [
+        {
+            "name": "fortawesome/font-awesome",
+            "version": "v4.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "0373b63c16d7aa31b6715c3f81a98a2ffb9f40a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/0373b63c16d7aa31b6715c3f81a98a2ffb9f40a6",
+                "reference": "0373b63c16d7aa31b6715c3f81a98a2ffb9f40a6",
+                "shasum": ""
+            },
+            "require-dev": {
+                "jekyll": "1.0.2",
+                "lessc": "1.4.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OFL-1.1",
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Gandy",
+                    "email": "dave@fontawesome.io",
+                    "homepage": "http://twitter.com/davegandy",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The iconic font designed for Bootstrap",
+            "homepage": "http://fontawesome.io/",
+            "keywords": [
+                "FontAwesome",
+                "awesome",
+                "bootstrap",
+                "font",
+                "icon"
+            ],
+            "time": "2013-11-05 12:35:21"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "twbs/bootstrap",
             "version": "v3.1.1",
@@ -47,9 +97,6 @@
             ],
             "time": "2014-02-13 17:24:59"
         }
-    ],
-    "packages-dev": [
-
     ],
     "aliases": [
 

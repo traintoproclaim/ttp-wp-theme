@@ -1,2 +1,13 @@
 node_modules/
-css/
+vendor/fortawesome/font-awesome/src/
+vendor/fortawesome/font-awesome/less/
+vendor/fortawesome/font-awesome/scss/
+vendor/fortawesome/font-awesome/.gitignore
+vendor/fortawesome/font-awesome/_config.yml
+vendor/fortawesome/font-awesome/component.json
+vendor/fortawesome/font-awesome/composer.json
+vendor/fortawesome/font-awesome/CONTRIBUTING.md
+vendor/fortawesome/font-awesome/Gemfile
+vendor/fortawesome/font-awesome/Gemfile.lock
+vendor/fortawesome/font-awesome/package.json
+vendor/fortawesome/font-awesome/README.md

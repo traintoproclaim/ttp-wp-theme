@@ -1,30 +1,90 @@
-{% include 'html-header.twig' %}
+<!doctype html>
 {% block head %}
+<!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{site.language_attributes}}> <![endif]-->
+<!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{site.language_attributes}}> <![endif]-->
+<!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{site.language_attributes}}> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" {{site.language_attributes}}> <!--<![endif]-->
+<head>
+    <meta charset="{{site.charset}}" />
+    <title>{{wp_title}}</title>
+    <meta name="description" content="{{site.description}}">
+    <link rel="stylesheet" href="{{site.theme.link}}/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{{site.theme.link}}/vendor/fortawesome/font-awesome/css/font-awesome.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="pingback" href="{{site.pingback_url}}" />
+	{{function('wp_head')}}
 {% endblock %}
 </head>
-    <body class="{{body_class}}" data-source="base.twig">
-        <header class="header" >
-            {% block header %}
-            <div class="wrapper">
+<body class="{{body_class}}" data-ng-app="ttpDefault" data-source="base.twig">
+<!-- HEADER -->
+<pre>
+{{dump(x)}}
+</pre>
+<header id="t3-header" class="container t3-header">
+	<div class="row">
+		<!-- LOGO -->
+		<div class="col-xs-12 col-sm-8 logo">
+			<div class="logo-image">
+				<a href="/" title="{{site.name}}">
+					<img class="logo-img" src="{{header.url}}" alt="{{site.name}}" />
+					<span>{{site.name}}</span>
+				</a>
+				<small class="site-slogan">{{site.description}}</small>
+			</div>
+		</div>
+		<!-- //LOGO -->
 
-                <h1 class="hdr-logo" role="banner">
-                    <a class="hdr-logo-link" href="/" title="Timber" rel="home">{{bloginfo('name')}}</a>
-                </h1>
-                <nav id="access" class="main-navigation" role="navigation">
-                    <ul>
-                    {% for item in menu.items %}
-                        <li id="menu-item-{{item.ID}}" class="menu-item menu-item-type-{{item.type}} menu-item-object-{{item.object}} menu-item-{{item.ID}}">
-                            <a href="{{item.link}}">{{item.title}}</a>
-                        </li>
-                    {% endfor %}
-                    </ul>
-                </nav><!-- #access -->
+		<div class="col-xs-12 col-sm-4">
+			<!-- HEAD SEARCH -->
+			<div class="head-search">
+				<!-- <jdoc:include type="modules" name="<?php $this->_p('head-search') ?>" style="raw" /> -->
+				{{function('get_search_form')}}
+			</div>
+			<!-- //HEAD SEARCH -->
+			<!-- LANGUAGE SWITCHER -->
+			<div class="languageswitcherload">
+				<!-- <jdoc:include type="modules" name="<?php $this->_p('languageswitcherload') ?>" style="raw" /> -->
+			</div>
+			<!-- //LANGUAGE SWITCHER -->
+		</div>
+	</div>
+</header>
+<!-- //HEADER -->
+<!--  MAIN NAV -->
+<nav class="navbar navbar-default" data-ng-controller="NavCtrl" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-ng-init="collapsed = true" data-ng-click="collapsed = !collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{site.name}}</a>
+    </div>
 
-            </div>
-            {% endblock %}
-        </header>
-
-
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" data-collapse="collapsed">
+      <ul class="nav navbar-nav">
+        {% for item in menu.items %}
+        <li class="{{item.classes | join(' ')}}">
+            {% if item.get_children %}
+            <a href="{{item.link}}">{{item.title}} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                {% for subitem in item.get_children %}
+                    <li><a href="{{subitem.get_path}}">{{child.title}}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+            <a href="{{item.link}}">{{item.title}}</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+</nav>
+<!--  //MAIN NAV -->
         <section id="content" role="main" class="content-wrapper">
             {% if title %}<h1>{{title}}</h1>{% endif %}
             <div class="wrapper {{sidebar_class}}">
@@ -43,5 +103,5 @@
             {% include 'footer.twig' %}
         </footer>
         {{ function('wp_footer') }}
-    </body>
+</body>
 </html>

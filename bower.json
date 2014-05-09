@@ -1,0 +1,24 @@
+{
+  "name": "Train To Proclaim Wordpress theme",
+  "description": "Train To Proclaim Wordpress theme",
+  "main": "index.php",
+  "authors": [
+    "SayGo Web"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor",
+    "vendor_bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.x",
+    "angular-route": "~1.2.x",
+    "angular-resource": "~1.2.x",
+    "angular-ui-bootstrap-bower": "~0.x"
+  }
+}

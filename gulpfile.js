@@ -8,7 +8,7 @@ gulp.task('default', function() {
 });
 
 gulp.task('less', function() {
-	gulp.src('./vendor/twbs/bootstrap/less/bootstrap.less')
+	gulp.src('./less/style.less')
 	.pipe(less())
 	.pipe(gulp.dest('./css'));
 });
