@@ -60,4 +60,9 @@
 
 		wp_enqueue_script('default', THEME_URL . "/client/default/ng-app.js");
 		
+		if (WP_DEBUG) {
+			// Add the LiveReload script
+			wp_enqueue_script('reload', "http://traintoproclaim.local:35729/livereload.js?snipver=1");
+		}
+		
 	}
