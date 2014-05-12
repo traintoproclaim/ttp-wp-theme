@@ -85,23 +85,23 @@
         {% endfor %}
 </nav>
 <!--  //MAIN NAV -->
-        <section id="content" role="main" class="content-wrapper">
-            {% if title %}<h1>{{title}}</h1>{% endif %}
-            <div class="wrapper {{sidebar_class}}">
-                {% block content %}
-                    Sorry, no content
-                {% endblock %}
-            </div>
-            {% if sidebar %}
-                <aside class="layout-sidebar">
-                    {{sidebar}}
-                </aside>
-            {% endif %}
-        </section>
+{% block content %}
+    <section id="content" role="main" class="content-wrapper">
+        {% if title %}<h1>{{title}}</h1>{% endif %}
+        <div class="wrapper {{sidebar_class}}">
+                Sorry, no content
+        </div>
+        {% if sidebar %}
+            <aside class="layout-sidebar">
+                {{sidebar}}
+            </aside>
+        {% endif %}
+    </section>
+{% endblock %}
 
-        <footer id="footer">
-            {% include 'footer.twig' %}
-        </footer>
-        {{ function('wp_footer') }}
+    <footer id="footer" class="t3-footer">
+        {% include 'footer.twig' %}
+    </footer>
+    {{ function('wp_footer') }}
 </body>
 </html>

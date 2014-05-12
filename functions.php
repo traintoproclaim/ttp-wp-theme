@@ -26,6 +26,7 @@
 	add_filter('timber_context', 'add_to_context');
 
 	add_action('wp_enqueue_scripts', 'ttp_load_scripts');
+	add_action('widgets_init', 'ttp_register_sidebars');
 
 	function add_to_context($data){
 		/* this is where you can add your own data to Timber's context object */
@@ -60,9 +61,48 @@
 
 		wp_enqueue_script('default', THEME_URL . "/client/default/ng-app.js");
 		
-		if (WP_DEBUG) {
+//		if (WP_DEBUG) {
 			// Add the LiveReload script
-			wp_enqueue_script('reload', "http://traintoproclaim.local:35729/livereload.js?snipver=1");
-		}
+			wp_enqueue_script('reload', "http://traintoproclaim.dev:35729/livereload.js?snipver=1");
+//		}
 		
+	}
+	
+	function ttp_register_sidebars() {
+		register_sidebar(array(
+			'name' => 'Home 1',
+			'id' => 'home_1',
+			'before_widget' => '<div>',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="rounded">',
+			'after_title' => '</h2>',
+		));
+		register_sidebar(array(
+			'name' => 'Home 1',
+			'id' => 'home_1',
+			'before_widget' => '<div>',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="rounded">',
+			'after_title' => '</h2>',
+		));
+		register_sidebars(3, array(
+			'name' => 'Spot %d',
+			'id' => 'spot-%d'
+		));
+		register_sidebar(array(
+			'name' => 'Footer 1',
+			'id' => 'footer_1',
+			'before_widget' => '<div>',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="rounded">',
+			'after_title' => '</h2>',
+		));
+		register_sidebar(array(
+			'name' => 'Footer 2',
+			'id' => 'footer_2',
+			'before_widget' => '<div>',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="rounded">',
+			'after_title' => '</h2>',
+		));
 	}

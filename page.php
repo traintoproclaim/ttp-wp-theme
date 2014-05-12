@@ -24,4 +24,13 @@
 $context = Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
-Timber::render(array('page-' . $post->post_name . '.twig', 'page.twig'), $context);
+if (is_front_page()){
+	$context['home_1'] = Timber::get_widgets('home_1');
+	$context['sb-spot-1'] = Timber::get_widgets('spot-1');
+	$context['sb-spot-2'] = Timber::get_widgets('spot-2');
+	$context['sb-spot-3'] = Timber::get_widgets('spot-3');
+	$templates = array('home.twig');
+} else {
+	$templates = array('page-' . $post->post_name . '.twig', 'page.twig');
+}
+Timber::render($templates, $context);
