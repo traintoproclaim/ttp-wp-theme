@@ -3,10 +3,10 @@
   "description": "Wordpress theme for Train To Proclaim",
   "type": "wordpress-theme",
   "require-dev": {
-    "twbs/bootstrap": "3.*"
+    "twbs/bootstrap": "3.*",
+    "fortawesome/font-awesome": "4.*"
   },
   "require": {
     "composer/installers": "~1.0",
-    "fortawesome/font-awesome": "4.*"
   }
 }
