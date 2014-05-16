@@ -1,10 +1,12 @@
 {
   "name": "traintoproclaim/ttp-wp-theme",
   "description": "Wordpress theme for Train To Proclaim",
+  "type": "wordpress-theme",
   "require-dev": {
     "twbs/bootstrap": "3.*"
   },
   "require": {
+    "composer/installers": "~1.0",
     "fortawesome/font-awesome": "4.*"
   }
 }
