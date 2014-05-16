@@ -1,4 +1,6 @@
 {
+  "name": "traintoproclaim/ttp-wp-theme",
+  "description": "Wordpress theme for Train To Proclaim",
   "require-dev": {
     "twbs/bootstrap": "3.*"
   },
