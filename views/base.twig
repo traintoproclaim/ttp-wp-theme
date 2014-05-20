@@ -19,9 +19,6 @@
 </head>
 <body class="{{body_class}}" data-ng-app="ttpDefault" data-source="base.twig">
 <!-- HEADER -->
-<pre>
-{{dump(x)}}
-</pre>
 <header id="t3-header" class="container t3-header">
 	<div class="row">
 		<!-- LOGO -->
@@ -70,19 +67,23 @@
     <div class="collapse navbar-collapse" data-collapse="collapsed">
       <ul class="nav navbar-nav">
         {% for item in menu.items %}
-        <li class="{{item.classes | join(' ')}}">
             {% if item.get_children %}
-            <a href="{{item.link}}">{{item.title}} <b class="caret"></b></a>
+	        <li class="dropdown {{item.classes | join(' ')}}">
+	            <a class="dropdown-toggle" href="#">{{item.title}} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                 {% for subitem in item.get_children %}
-                    <li><a href="{{subitem.get_path}}">{{child.title}}</a></li>
+                    <li><a href="{{subitem.get_path}}">{{subitem.title}}</a></li>
                 {% endfor %}
                 </ul>
+            </li>
             {% else %}
-            <a href="{{item.link}}">{{item.title}}</a>
+	        <li class="{{item.classes | join(' ')}}">
+    	        <a href="{{item.link}}">{{item.title}}</a>
+	        </li>
             {% endif %}
-        </li>
         {% endfor %}
+        </ul>
+    </div>
 </nav>
 <!--  //MAIN NAV -->
 {% block content %}
