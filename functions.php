@@ -21,6 +21,7 @@
 	);
 	add_theme_support('custom-header', $customerHeaderDefault);
 	add_theme_support( 'html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption'));
+	add_theme_support('woocommerce');
 	
 	add_filter('get_twig', 'add_to_twig');
 	add_filter('timber_context', 'add_to_context');
@@ -28,6 +29,20 @@
 	add_action('wp_enqueue_scripts', 'ttp_load_scripts');
 	add_action('widgets_init', 'ttp_register_sidebars');
 
+	remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+	remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+	
+	add_action('woocommerce_before_main_content', 'ttp_theme_wrapper_start', 10);
+	add_action('woocommerce_after_main_content', 'ttp_theme_wrapper_end', 10);
+	
+	function ttp_theme_wrapper_start() {
+		echo '<section id="ttp-woo-wrapper">';
+	}
+	
+	function ttp_theme_wrapper_end() {
+		echo '</section>';
+	}
+	
 	function add_to_context($data){
 		/* this is where you can add your own data to Timber's context object */
 		$data['header'] = get_custom_header();
