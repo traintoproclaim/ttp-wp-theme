@@ -24,6 +24,21 @@
 $context = Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
+
+// TODO need a good way to determine if this is a product page. get_post_type() doesn't seem to cut it.
+// if ($post->post_content == '[productspage]' || true) {
+if (is_shop() || true) {
+	while(have_posts()) {
+		the_post();
+// 		$x = get_post_type();
+		ob_start();
+		the_content();
+		$post->post_content = ob_get_contents();
+		ob_end_clean();
+		break;
+	}
+}
+
 if (is_front_page()){
 	$context['home_1'] = Timber::get_widgets('home_1');
 	$context['sb-spot-1'] = Timber::get_widgets('spot-1');
@@ -33,4 +48,5 @@ if (is_front_page()){
 } else {
 	$templates = array('page-' . $post->post_name . '.twig', 'page.twig');
 }
+
 Timber::render($templates, $context);
