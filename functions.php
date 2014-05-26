@@ -78,7 +78,7 @@
 		
 //		if (WP_DEBUG) {
 			// Add the LiveReload script
-			wp_enqueue_script('reload', "http://traintoproclaim.dev:35729/livereload.js?snipver=1");
+// 			wp_enqueue_script('reload', "http://traintoproclaim.dev:35729/livereload.js?snipver=1");
 //		}
 		
 	}
@@ -155,19 +155,16 @@
 		 ----------------------------------------------- */
 		function is_a_page_containing_products(){
 			global $post;
-			$is_a_page_containing_products = false;
+			$isPageWithProducts = false;
 				
 			if(get_post_type($post) == 'wpsc-product') {
-				$is_a_page_containing_products = true;
-			}
-	
-			if ( function_exists( 'is_products_page' ) && !$is_a_page_containing_products){
+				$isPageWithProducts = true;
+			} else  if ( function_exists( 'is_products_page' )) {
 				if(is_products_page()){
-					$is_a_page_containing_products = true;
+					$isPageWithProducts = true;
 				}
 			}
-	
-			return $is_a_page_containing_products;
+			return $isPageWithProducts;
 		}
 	
 		/* Cart drop down
@@ -250,7 +247,7 @@
 		<?php
 		}
 		
-			/* Use jQuery to add bootstrap classes to stuff
+		/* Use jQuery to add bootstrap classes to stuff
 		----------------------------------------------- */
 		add_action('wp_head','jbst_wpec_add_classes_minimal', 30);
 		function jbst_wpec_add_classes_minimal() {?>

@@ -17,7 +17,7 @@
 	{{function('wp_head')}}
 {% endblock %}
 </head>
-<body class="{{body_class}}" data-ng-app="ttpDefault" data-source="base.twig">
+<body class="{{body_class}}" data-ng-app="{% block app app %}" data-source="base.twig">
 <!-- HEADER -->
 <header id="t3-header" class="container t3-header">
 	<div class="row">
