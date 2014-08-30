@@ -30,6 +30,8 @@ $context['app'] = 'ttpDefault';
 // TODO need a good way to determine if this is a product page. get_post_type() doesn't seem to cut it.
 // if ($post->post_content == '[productspage]' || true) {
 
+$context['footer_1'] = Timber::get_widgets('footer_1');
+$context['footer_2'] = Timber::get_widgets('footer_2');
 if (is_front_page()){
 	$context['home_1'] = Timber::get_widgets('home_1');
 	$context['spot_1'] = Timber::get_widgets('spot_1');
