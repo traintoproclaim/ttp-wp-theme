@@ -21,7 +21,7 @@
 	);
 	add_theme_support('custom-header', $customerHeaderDefault);
 	add_theme_support( 'html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption'));
-	add_theme_support('woocommerce');
+// 	add_theme_support('woocommerce');
 	
 	add_filter('get_twig', 'add_to_twig');
 	add_filter('timber_context', 'add_to_context');
@@ -29,11 +29,11 @@
 	add_action('wp_enqueue_scripts', 'ttp_load_scripts');
 	add_action('widgets_init', 'ttp_register_sidebars');
 
-	remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-	remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+// 	remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+// 	remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 	
-	add_action('woocommerce_before_main_content', 'ttp_theme_wrapper_start', 10);
-	add_action('woocommerce_after_main_content', 'ttp_theme_wrapper_end', 10);
+// 	add_action('woocommerce_before_main_content', 'ttp_theme_wrapper_start', 10);
+// 	add_action('woocommerce_after_main_content', 'ttp_theme_wrapper_end', 10);
 	
 	function ttp_theme_wrapper_start() {
 		echo '<section id="ttp-woo-wrapper">';
@@ -100,10 +100,16 @@
 			'before_title' => '<h2 class="rounded">',
 			'after_title' => '</h2>',
 		));
-		register_sidebars(3, array(
-			'name' => 'Spot %d',
-			'id' => 'spot-%d'
-		));
+		for ($i = 0; $i < 3; $i++) {
+			register_sidebar(array(
+				'name' => sprintf('Spot %d', $i + 1),
+				'id' => sprintf('spot_%d', $i + 1),
+				'before_widget' => '<div>',
+				'after_widget' => '</div>',
+				'before_title' => '<h2 class="rounded">',
+				'after_title' => '</h2>',
+			));
+		}
 		register_sidebar(array(
 			'name' => 'Footer 1',
 			'id' => 'footer_1',
